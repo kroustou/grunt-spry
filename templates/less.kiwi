@@ -1,0 +1,13 @@
+.sprite(${ name }) {
+    background: url('../images/${ simple_sprite_path }') -${ simple_pos.x }+${ simple.width }px 0;
+    width: ${ simple.width }px;
+    height: ${ simple.height }px;
+
+ @media (-webkit-min-device-pixel-ratio: 1.25),
+           (min-resolution: 120dpi) {
+         background: url('../images/${ retina_sprite_path }') -${ retina_pos.x }+${ retina.width }/2px 0;
+         width:  ${ retina.width }/2px;
+         height: ${ retina.height }/2px;
+         background-size: 50%;
+    }
+}
