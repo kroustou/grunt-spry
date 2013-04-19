@@ -192,7 +192,8 @@ module.exports = function(grunt) {
                 'simple_pos': current_simple_pos,
                 'retina_pos': current_retina_pos,
                 'retina': css[0],
-                'simple': css[1]
+                'simple': css[1],
+                'retina_width': retina_width
             },
             function onRendered(err, rendered) {
                 output += (String(rendered));
@@ -204,10 +205,12 @@ module.exports = function(grunt) {
             });
         }
 
+        var retina_width = 0;
         function createCss() {
             // css Array contains the info of the pairs of each icon [retina, simple]
             for (i = 0; i < css_retina[0].length; i++) {
                 css.push([css_retina[0][i],css_simple[0][i]]);
+                retina_width += parseInt(css_retina[0][i].width, 10);
             }
 
             grunt.util.async.map(css, render, function(err) {
